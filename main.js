@@ -6,6 +6,7 @@ import { cd } from "./src/cd.js";
 import { rn } from "./src/rn.js"
 import { ls } from "./src/ls.js"
 import { cat } from "./src/cat.js"
+import { cp } from "./src/cp.js"
 import readline from "node:readline";
 
 const main = async () => {
@@ -47,6 +48,9 @@ const main = async () => {
           cat(args[0])
           dir()
           break 
+        case "cp":
+          cp(args[0], args[1])
+          dir()
       }
     })
       .on("SIGINT", () => {
