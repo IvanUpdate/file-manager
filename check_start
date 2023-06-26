@@ -1,7 +1,0 @@
-export const check_start = (value, string) => {
-    if (value.startsWith(string)) {
-        return true
-    } else {
-        return false
-    }
-}

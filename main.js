@@ -1,7 +1,8 @@
 import { homedir } from "os";
-import { check_start } from "./check_start";
 import { dir } from './src/dir.js'
 import { up } from './src/up.js'
+import { add_file } from "./src/add.js";
+import { cd } from "./src/cd.js";
 import readline from "node:readline";
 
 const main = async () => {
@@ -17,15 +18,20 @@ const main = async () => {
 
     rl.on("line", (input) => {
       console.log(`Received: ${input}`)
-      switch(input){
+      const [command , ...args] = input.toString().trim().split(" ");
+      switch(command){
         case "up":
           up()
           dir()
           break
-        case check_start(input, "add"):
-          
+        case "add":
+          add_file(args[0])
           dir()
           break 
+        case "cd":
+            cd(args[0])
+            dir()
+            break 
       }
     })
       .on("SIGINT", () => {
