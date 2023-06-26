@@ -3,6 +3,9 @@ import { dir } from './src/dir.js'
 import { up } from './src/up.js'
 import { add_file } from "./src/add.js";
 import { cd } from "./src/cd.js";
+import { rn } from "./src/rn.js"
+import { ls } from "./src/ls.js"
+import { cat } from "./src/cat.js"
 import readline from "node:readline";
 
 const main = async () => {
@@ -31,7 +34,19 @@ const main = async () => {
         case "cd":
             cd(args[0])
             dir()
-            break 
+            break
+        case "rn":
+          rn(args[0], args[1])
+          dir()
+          break
+        case "ls":
+          ls()
+          dir()
+          break
+        case "cat":
+          cat(args[0])
+          dir()
+          break 
       }
     })
       .on("SIGINT", () => {
